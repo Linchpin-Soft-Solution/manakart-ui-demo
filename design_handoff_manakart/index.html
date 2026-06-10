@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manakart — Regional MSME Bazaar</title>
+<link rel="stylesheet" href="manakart.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" data-screen-label="Header">
+  <div class="container header-main">
+    <a href="index.html" class="brand" aria-label="Manakart home">
+      <span><span class="m">M</span>anakart</span>
+      <svg class="leaf" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14a7 7 0 0 0 14 0c0-4-2-8-7-12Zm0 4.7c2.8 2.6 4 5.2 4 7.3a4 4 0 0 1-8 0c0-2.1 1.2-4.7 4-7.3Z"/></svg>
+    </a>
+    <form class="search" onsubmit="return false">
+      <input type="text" placeholder="Search for products, categories or sellers…" aria-label="Search">
+      <button class="search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </form>
+    <div class="header-actions">
+      <a href="#" class="icon-btn" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+        <span class="badge" data-wish-badge style="display:none">0</span>
+      </a>
+      <a href="#" class="icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </a>
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.2L21.5 7H6"/></svg>
+        <span class="badge" data-cart-badge style="display:none">0</span>
+      </a>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <div class="container">
+      <div class="nav-group">
+        <a href="category.html" class="nav-link">Categories</a>
+        <a href="#" class="nav-link">Shop by Region</a>
+        <a href="category.html" class="nav-link">Bulk Deals</a>
+        <a href="category.html" class="nav-link">New Arrivals</a>
+        <a href="category.html" class="nav-link">Low MOQ</a>
+        <a href="category.html" class="nav-link">Factory Direct</a>
+      </div>
+      <div class="nav-group">
+        <a href="#" class="nav-link accent">Sell on Manakart</a>
+        <a href="#" class="nav-link">Login</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero bazaar-texture">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Made in India · MSME Marketplace</span>
+      <h1>Products made by MSMEs.<br><span class="hl">Delivered to your business.</span></h1>
+      <p>Support local. Buy direct. Grow together. Source verified commodities and handcrafted goods straight from India's small manufacturers — with low MOQs and GST invoices.</p>
+      <div class="hero-cta">
+        <a href="category.html" class="btn btn-primary">
+          Shop Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#regions" class="btn btn-ghost">Explore Regions</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>12,000+</strong><span>Verified MSMEs</span></div>
+        <div><strong>28</strong><span>States &amp; UTs</span></div>
+        <div><strong>4.8</strong><span>Avg. seller rating</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="collage">
+        <div class="cl cl-a ph-img" data-art="diya"></div>
+        <div class="cl cl-b ph-img" data-art="pottery"></div>
+        <div class="cl cl-c ph-img" data-art="spices"></div>
+        <div class="cl cl-d ph-img" data-art="textile"></div>
+      </div>
+      <div class="hero-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <div><strong>Verified MSME sellers</strong><span>GST invoices on every order</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED DEALS ============ -->
+<section class="block" id="deals">
+  <div class="container">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Limited time</span>
+        <h2 class="section-title" style="margin-top:14px">Featured Deals</h2>
+        <p>Hand-picked bulk offers from factory-direct sellers — live for a limited window.</p>
+      </div>
+      <a href="category.html" class="link-more">View all deals
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="deals-grid">
+      <a href="category.html" class="deal deal-hero ph-img" data-art="spices">
+        <div class="deal-body">
+          <span class="deal-kicker">Factory Direct · Kerala</span>
+          <h3>Up to 30% off whole-spice combos</h3>
+          <p>Cardamom, pepper, clove &amp; turmeric — sourced direct from Idukki estates. Bulk pricing from ₹250/kg.</p>
+          <span class="btn btn-accent btn-sm">Shop the deal
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="category.html" class="deal deal-sm ph-img" data-art="jute">
+        <div class="deal-body">
+          <span class="deal-kicker">Kolkata, WB</span>
+          <h3>Jute &amp; eco-packaging</h3>
+          <p>From ₹85/pc · MOQ 50</p>
+        </div>
+      </a>
+      <a href="category.html" class="deal deal-sm ph-img" data-art="textile">
+        <div class="deal-body">
+          <span class="deal-kicker">Coimbatore, TN</span>
+          <h3>Cotton fabric by the metre</h3>
+          <p>From ₹65/mtr · MOQ 50</p>
+        </div>
+      </a>
+      <a href="category.html" class="deal deal-sm ph-img" data-art="diya">
+        <div class="deal-body">
+          <span class="deal-kicker">Moradabad, UP</span>
+          <h3>Brass &amp; metalware</h3>
+          <p>From ₹220/pc · MOQ 20</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POPULAR CATEGORIES ============ -->
+<section class="block alt bazaar-texture">
+  <div class="container">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Browse the bazaar</span>
+        <h2 class="section-title" style="margin-top:14px">Popular Categories</h2>
+      </div>
+      <a href="category.html" class="link-more">All categories
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ============ REGIONAL BESTSELLERS ============ -->
+<section class="block" id="bestsellers">
+  <div class="container">
+    <div class="section-head">
+      <div class="lead">
+        <span class="eyebrow">Trusted by buyers</span>
+        <h2 class="section-title" style="margin-top:14px">Regional Bestsellers</h2>
+        <p>The most-ordered products from verified small manufacturers this month.</p>
+      </div>
+      <a href="category.html" class="link-more">See all
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="product-row" id="bestGrid"></div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><h4>Verified MSME Sellers</h4><p>Every seller is KYC &amp; Udyam checked</p></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span>
+        <div><h4>GST Invoice Available</h4><p>Claim input credit on every order</p></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h2l2.4 12.3a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L22 7H6"/><circle cx="9.5" cy="20.5" r="1.3"/><circle cx="18" cy="20.5" r="1.3"/></svg></span>
+        <div><h4>Low MOQ Products</h4><p>Order small, scale when you're ready</p></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <div><h4>Safe &amp; Secure Payments</h4><p>Escrow-protected, refund guaranteed</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" data-screen-label="Footer">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <span class="brand"><span class="m">M</span>anakart</span>
+      <p>India's marketplace for MSME-made commodities. Buy direct from small manufacturers — verified, GST-ready, and built for business.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Shop</h5>
+      <a href="category.html">All Categories</a>
+      <a href="category.html">Bulk Deals</a>
+      <a href="category.html">New Arrivals</a>
+      <a href="category.html">Low MOQ</a>
+      <a href="category.html">Factory Direct</a>
+    </div>
+    <div class="foot-col">
+      <h5>Sellers</h5>
+      <a href="#">Sell on Manakart</a>
+      <a href="vendor.html">Seller Directory</a>
+      <a href="#">Seller Help</a>
+      <a href="#">Udyam Registration</a>
+    </div>
+    <div class="foot-col">
+      <h5>Support</h5>
+      <a href="#">Track Order</a>
+      <a href="#">Returns &amp; Refunds</a>
+      <a href="#">GST &amp; Invoicing</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="foot-col">
+      <h5>Buy with confidence</h5>
+      <p style="font-size:14px;color:rgba(255,255,255,.55);margin:0 0 14px">Escrow-protected payments. Refunds guaranteed on quality disputes.</p>
+      <div class="pay-row">
+        <span>UPI</span><span>Net Banking</span><span>Cards</span>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Manakart Technologies Pvt. Ltd. · Made in India</span>
+    <span>Privacy · Terms · GST Compliance</span>
+  </div>
+</footer>
+
+<script src="manakart.js"></script>
+<script src="manakart-art.js"></script>
+<script>
+/* ---- Categories ---- */
+const CATEGORIES = [
+  ['Food Commodities','grain'],['Packaging','box'],['Textiles','textile'],['Handicrafts','diya'],
+  ['Industrial Goods','gear'],['Agriculture','leaf'],['Office Supplies','clip'],['Home &amp; Kitchen','pot']
+];
+document.getElementById('catGrid').innerHTML = CATEGORIES.map(([n,a]) => `
+  <a href="category.html" class="cat-card">
+    <span class="cat-ic">${MKART.icon(a)}</span>
+    <span class="cat-name">${n}</span>
+  </a>`).join('');
+
+/* ---- Bestsellers ---- */
+const BEST = [
+  {id:'brass-diya', name:'Brass Diya', loc:'Moradabad, UP', moq:'20 pcs', price:220, unit:'/pc', art:'diya', flag:'Verified MSME', rating:'4.8'},
+  {id:'jute-tote', name:'Jute Tote Bag', loc:'Kolkata, WB', moq:'50 pcs', price:85, unit:'/pc', art:'jute', flag:'Low MOQ', rating:'4.7'},
+  {id:'peanut-chikki', name:'Peanut Chikki', loc:'Maharashtra', moq:'10 kg', price:120, unit:'/kg', art:'chikki', flag:'GST Available', rating:'4.9'},
+  {id:'cotton-fabric', name:'Cotton Fabric', loc:'Coimbatore, TN', moq:'50 mtr', price:65, unit:'/mtr', art:'textile', flag:'Factory Direct', rating:'4.6'},
+  {id:'spices-combo', name:'Spices Combo', loc:'Kerala', moq:'2 kg', price:250, unit:'/kg', art:'spices', flag:'Verified MSME', rating:'4.9'}
+];
+document.getElementById('bestGrid').innerHTML = BEST.map(p => MKART.productCard(p)).join('');
+MKART.paintArt();
+MK.refreshBadges();
+document.querySelectorAll('[data-wish]').forEach(b => { if (MK.isWished(b.dataset.wish)) b.classList.add('active'); });
+</script>
+
+<style>
+/* ---------- Homepage-specific ---------- */
+.hero { padding: 60px 0 72px; background: var(--cream); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+.hero-copy h1 { font-size: 56px; margin: 22px 0 0; line-height: 1.06; }
+.hero-copy h1 .hl { color: var(--green); }
+.hero-copy > p { font-size: 18px; color: var(--ink-2); margin: 22px 0 0; max-width: 500px; line-height: 1.6; }
+.hero-cta { display: flex; gap: 14px; margin-top: 32px; }
+.hero-stats { display: flex; gap: 40px; margin-top: 44px; padding-top: 30px; border-top: 1px solid var(--ink-line); }
+.hero-stats strong { font-family: var(--serif); font-weight: 700; font-size: 33px; letter-spacing: -.005em; color: var(--ink); display: block; line-height: 1; }
+.hero-stats span { font-size: 13px; color: var(--ink-3); margin-top: 6px; display: block; }
+
+.hero-visual { position: relative; }
+.collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 14px; height: 480px; }
+.cl { border-radius: var(--r-lg); border: 1px solid var(--ink-line); box-shadow: var(--sh); }
+.cl-a { grid-column: 1; grid-row: 1 / span 2; }
+.cl-b { grid-column: 2; grid-row: 1; }
+.cl-c { grid-column: 3; grid-row: 1 / span 2; }
+.cl-d { grid-column: 2; grid-row: 2; }
+.cl-a { grid-column: 1; grid-row: 1 / span 2; }
+.hero-tag {
+  position: absolute; left: -18px; bottom: -18px;
+  background: var(--paper); border: 1px solid var(--ink-line); border-radius: var(--r-lg);
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px; box-shadow: var(--sh-lg);
+}
+.hero-tag svg { width: 30px; height: 30px; color: var(--green); flex-shrink: 0; }
+.hero-tag strong { font-size: 14px; display: block; }
+.hero-tag span { font-size: 12.5px; color: var(--ink-3); }
+
+.block.alt { background: var(--cream-2); }
+
+/* Featured deals */
+.deals-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; height: 480px; }
+.deal { position: relative; border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--ink-line); display: flex; align-items: flex-end; transition: transform var(--t), box-shadow var(--t); }
+.deal:hover { transform: translateY(-3px); box-shadow: var(--sh-lg); }
+.deal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,14,8,.78) 0%, rgba(20,14,8,.30) 42%, transparent 70%); }
+.deal-hero { grid-row: 1 / span 2; }
+.deal-body { position: relative; z-index: 1; padding: 26px; color: #fff; }
+.deal-hero .deal-body { padding: 34px; }
+.deal-kicker { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-soft); }
+.deal h3 { color: #fff; font-size: 22px; margin: 10px 0 0; }
+.deal-hero h3 { font-size: 34px; max-width: 360px; }
+.deal p { color: rgba(255,255,255,.82); font-size: 14px; margin: 8px 0 0; max-width: 340px; }
+.deal-hero .btn { margin-top: 20px; }
+
+/* Categories */
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cat-card { background: var(--beige); border: 1px solid var(--ink-line); border-radius: var(--r-lg); padding: 26px 22px; display: flex; align-items: center; gap: 16px; transition: transform var(--t), box-shadow var(--t), background var(--t); }
+.cat-card:hover { transform: translateY(-3px); box-shadow: var(--sh); background: var(--paper); }
+.cat-ic { width: 52px; height: 52px; border-radius: 14px; background: var(--paper); border: 1px solid var(--ink-line); display: grid; place-items: center; color: var(--green); flex-shrink: 0; }
+.cat-ic svg { width: 26px; height: 26px; }
+.cat-name { font-family: var(--serif); font-weight: 700; font-size: 19px; letter-spacing: 0; color: var(--ink); }
+
+/* product row */
+.product-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+
+.pay-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.pay-row span { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.18); border-radius: 7px; padding: 6px 11px; }
+
+@media (max-width: 1100px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-copy h1 { font-size: 44px; }
+  .deals-grid { grid-template-columns: 1fr 1fr; height: auto; }
+  .deal-hero { grid-row: auto; grid-column: 1 / span 2; min-height: 280px; }
+  .deal-sm { min-height: 200px; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-row { grid-template-columns: repeat(2, 1fr); }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .trust-item:nth-child(2) { border-right: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</body>
+</html>

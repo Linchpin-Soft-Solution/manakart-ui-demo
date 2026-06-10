@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — Manakart</title>
+<link rel="stylesheet" href="manakart.css">
+<style>
+.crumb { padding: 22px 0 22px; font-size: 13.5px; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+.crumb a:hover { color: var(--green); }
+.crumb svg { width: 14px; height: 14px; }
+.cart-title { font-size: 38px; margin-bottom: 4px; }
+.cart-title-sub { color: var(--ink-2); font-size: 15px; margin-bottom: 30px; }
+
+.cart-layout { display: grid; grid-template-columns: 1fr 360px; gap: 36px; align-items: start; padding-bottom: 90px; }
+
+.cart-item { display: grid; grid-template-columns: 110px 1fr auto; gap: 22px; padding: 22px; background: var(--paper); border: 1px solid var(--ink-line); border-radius: var(--r-lg); margin-bottom: 16px; align-items: center; }
+.ci-media { width: 110px; height: 110px; border-radius: var(--r); overflow: hidden; border: 1px solid var(--ink-line); background: var(--beige); }
+.ci-info h3 { font-family: var(--serif); font-size: 21px; }
+.ci-loc { font-size: 13px; color: var(--ink-3); display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; }
+.ci-loc svg { width: 13px; height: 13px; }
+.ci-meta { font-size: 13px; color: var(--ink-2); margin-top: 8px; display: flex; gap: 16px; }
+.ci-meta strong { color: var(--green); font-weight: 700; }
+.ci-controls { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.ci-line-total { font-family: var(--serif); font-size: 22px; color: var(--ink); }
+.ci-bottom { display: flex; align-items: center; gap: 16px; }
+.ci-remove { font-size: 13px; font-weight: 600; color: var(--ink-3); background: none; border: none; display: inline-flex; align-items: center; gap: 6px; transition: color var(--t); }
+.ci-remove:hover { color: var(--terracotta); }
+.ci-remove svg { width: 15px; height: 15px; }
+
+.cart-empty { text-align: center; padding: 70px 30px; background: var(--paper); border: 1px solid var(--ink-line); border-radius: var(--r-lg); }
+.cart-empty svg { width: 56px; height: 56px; color: var(--ink-line); margin: 0 auto 18px; }
+.cart-empty h3 { font-size: 24px; margin-bottom: 8px; }
+.cart-empty p { color: var(--ink-2); margin-bottom: 22px; }
+
+/* summary */
+.summary { background: var(--cream-2); border: 1px solid var(--ink-line); border-radius: var(--r-lg); padding: 26px; position: sticky; top: 150px; }
+.summary h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 18px; }
+.sum-row { display: flex; justify-content: space-between; padding: 11px 0; font-size: 14.5px; color: var(--ink-2); }
+.sum-row .v { color: var(--ink); font-weight: 600; }
+.sum-row.free .v { color: var(--green); }
+.sum-divider { height: 1px; background: var(--ink-line); margin: 8px 0; border: none; }
+.sum-total { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 4px; }
+.sum-total .l { font-size: 16px; font-weight: 700; }
+.sum-total .v { font-family: var(--serif); font-size: 30px; color: var(--green); }
+.sum-note { font-size: 12px; color: var(--ink-3); margin: 2px 0 18px; }
+.gst-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--green); background: var(--green-soft); border-radius: var(--r-sm); padding: 8px 12px; margin-top: 14px; width: 100%; }
+.gst-tag svg { width: 15px; height: 15px; }
+.promo { display: flex; gap: 8px; margin-top: 18px; }
+.promo input { flex: 1; font-family: var(--sans); font-size: 14px; padding: 11px 14px; border: 1px solid var(--ink-line); border-radius: var(--r); background: var(--paper); }
+.promo input:focus { outline: none; border-color: var(--green); }
+
+@media (max-width: 1100px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .summary { position: static; }
+}
+</style>
+</head>
+<body>
+<div id="mk-header"></div>
+
+<main class="container" data-screen-label="Cart">
+  <nav class="crumb">
+    <a href="index.html">Home</a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+    <span style="color:var(--ink)">Your Cart</span>
+  </nav>
+
+  <h1 class="cart-title">Your cart</h1>
+  <p class="cart-title-sub" id="cartSub"></p>
+
+  <div class="cart-layout">
+    <div id="cartItems"></div>
+
+    <aside class="summary" id="summary">
+      <h3>Order summary</h3>
+      <div class="sum-row"><span>Subtotal</span><span class="v" id="sSubtotal"></span></div>
+      <div class="sum-row"><span>GST (18%)</span><span class="v" id="sGst"></span></div>
+      <div class="sum-row free"><span>Shipping</span><span class="v" id="sShip">Calculated at checkout</span></div>
+      <hr class="sum-divider">
+      <div class="sum-total"><span class="l">Total</span><span class="v" id="sTotal"></span></div>
+      <p class="sum-note">Inclusive of GST · freight added at checkout</p>
+      <a href="#" class="btn btn-primary btn-block" style="height:52px;font-size:16px" onclick="return false">
+        Proceed to checkout
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="promo">
+        <input type="text" placeholder="Promo code">
+        <button class="btn btn-ghost btn-sm">Apply</button>
+      </div>
+      <div class="gst-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>GST invoice will be issued for this order</div>
+    </aside>
+  </div>
+</main>
+
+<div id="mk-footer"></div>
+
+<script src="manakart-data.js"></script>
+<script src="manakart.js"></script>
+<script src="manakart-art.js"></script>
+<script src="manakart-chrome.js"></script>
+<script>
+function lineUnit(item) {
+  // mirror PDP tiered pricing if MOQ known
+  const moqNum = parseInt(item.moq,10) || 1;
+  if (item.qty >= moqNum*20) return Math.round(item.price*0.85);
+  if (item.qty >= moqNum*5) return Math.round(item.price*0.92);
+  return item.price;
+}
+
+function render() {
+  const cart = MK.getCart();
+  const wrap = document.getElementById('cartItems');
+  const summary = document.getElementById('summary');
+
+  if (!cart.length) {
+    wrap.innerHTML = `
+      <div class="cart-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.2L21.5 7H6"/></svg>
+        <h3>Your cart is empty</h3>
+        <p>Browse verified MSME products and add them to your cart.</p>
+        <a href="category.html" class="btn btn-primary">Start shopping</a>
+      </div>`;
+    summary.style.display = 'none';
+    document.getElementById('cartSub').textContent = 'No items yet';
+    return;
+  }
+  summary.style.display = '';
+
+  wrap.innerHTML = cart.map(item => {
+    const prod = MK_DATA.product(item.id);
+    const art = prod ? prod.art : 'jute';
+    const unit = lineUnit(item);
+    return `
+    <div class="cart-item" data-id="${item.id}">
+      <div class="ci-media ph-img" data-art="${art}"></div>
+      <div class="ci-info">
+        <a href="product.html?id=${item.id}"><h3>${item.name}</h3></a>
+        <span class="ci-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>${item.seller||''}</span>
+        <div class="ci-meta"><span>MOQ ${item.moq||'—'}</span><span><strong>${MK.rupee(unit)}</strong>${item.unit}</span></div>
+      </div>
+      <div class="ci-controls">
+        <div class="ci-line-total">${MK.rupee(unit*item.qty)}</div>
+        <div class="ci-bottom">
+          <div class="stepper">
+            <button data-step-dec aria-label="Decrease">−</button>
+            <input type="number" value="${item.qty}" min="1" data-qty="${item.id}">
+            <button data-step-inc aria-label="Increase">+</button>
+          </div>
+          <button class="ci-remove" data-remove="${item.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>Remove</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  MKART.paintArt(wrap);
+
+  // totals
+  const subtotal = cart.reduce((s,i)=> s + lineUnit(i)*i.qty, 0);
+  const gst = Math.round(subtotal*0.18);
+  document.getElementById('sSubtotal').textContent = MK.rupee(subtotal);
+  document.getElementById('sGst').textContent = MK.rupee(gst);
+  document.getElementById('sTotal').textContent = MK.rupee(subtotal+gst);
+  const units = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartSub').textContent = `${cart.length} product${cart.length!==1?'s':''} · ${units} units from verified MSME sellers`;
+}
+
+// qty change
+document.addEventListener('change', e=>{
+  const inp = e.target.closest('[data-qty]');
+  if (!inp) return;
+  MK.setQty(inp.dataset.qty, Math.max(1, parseInt(inp.value,10)||1));
+  render();
+});
+// remove
+document.addEventListener('click', e=>{
+  const rm = e.target.closest('[data-remove]');
+  if (!rm) return;
+  MK.removeFromCart(rm.dataset.remove);
+  render();
+});
+
+render();
+MK.refreshBadges();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Products — Manakart</title>
+<link rel="stylesheet" href="manakart.css">
+<style>
+.crumb { padding: 22px 0 0; font-size: 13.5px; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+.crumb a:hover { color: var(--green); }
+.crumb svg { width: 14px; height: 14px; }
+
+.listing-head { padding: 18px 0 26px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.listing-head h1 { font-size: 38px; }
+.listing-head p { margin: 8px 0 0; color: var(--ink-2); font-size: 15px; }
+.listing-tools { display: flex; align-items: center; gap: 12px; }
+.result-count { font-size: 14px; color: var(--ink-3); }
+.sort-sel { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); background: var(--paper); border: 1px solid var(--ink-line); border-radius: var(--r); padding: 11px 16px; cursor: pointer; }
+.sort-sel:focus { outline: none; border-color: var(--green); }
+
+.listing-layout { display: grid; grid-template-columns: 272px 1fr; gap: 36px; align-items: start; padding-bottom: 80px; }
+
+/* filters */
+.filters { position: sticky; top: 150px; background: var(--paper); border: 1px solid var(--ink-line); border-radius: var(--r-lg); padding: 8px 22px 14px; }
+.filter-group { padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
+.filter-group:last-child { border-bottom: none; }
+.filter-group h4 { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); margin: 0 0 14px; }
+.fopt { display: flex; align-items: center; gap: 11px; padding: 6px 0; cursor: pointer; font-size: 14.5px; color: var(--ink-2); transition: color var(--t); }
+.fopt:hover { color: var(--ink); }
+.fopt input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--ink-line); border-radius: 5px; flex-shrink: 0; position: relative; transition: all var(--t); cursor: pointer; }
+.fopt input:checked { background: var(--green); border-color: var(--green); }
+.fopt input:checked::after { content: ""; position: absolute; left: 5px; top: 2px; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.fopt .count { margin-left: auto; font-size: 12.5px; color: var(--ink-3); }
+.filter-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 0 4px; }
+.filter-head h3 { font-family: var(--serif); font-size: 20px; }
+.clear-btn { font-size: 13px; font-weight: 600; color: var(--terracotta); background: none; border: none; }
+.clear-btn:hover { text-decoration: underline; }
+
+.grid-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.empty { grid-column: 1/-1; text-align: center; padding: 80px 0; color: var(--ink-3); }
+
+@media (max-width: 1100px) {
+  .listing-layout { grid-template-columns: 1fr; }
+  .filters { position: static; }
+  .grid-products { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<div id="mk-header"></div>
+
+<main class="container" data-screen-label="Category Listing">
+  <div class="crumb">
+    <a href="index.html">Home</a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+    <span style="color:var(--ink)">All Products</span>
+  </div>
+
+  <div class="listing-head">
+    <div>
+      <span class="eyebrow">Factory direct · Verified MSMEs</span>
+      <h1 style="margin-top:12px">Shop all products</h1>
+      <p>Source commodities and handcrafted goods from India's small manufacturers.</p>
+    </div>
+    <div class="listing-tools">
+      <span class="result-count" id="resultCount"></span>
+      <select class="sort-sel" id="sortSel">
+        <option value="pop">Sort: Most popular</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="rating">Top rated</option>
+        <option value="new">Newest</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="listing-layout">
+    <aside class="filters">
+      <div class="filter-head">
+        <h3>Filters</h3>
+        <button class="clear-btn" id="clearBtn">Clear all</button>
+      </div>
+      <div class="filter-group">
+        <h4>Category</h4>
+        <div id="fCat"></div>
+      </div>
+      <div class="filter-group">
+        <h4>Region</h4>
+        <div id="fRegion"></div>
+      </div>
+      <div class="filter-group">
+        <h4>Buyer benefits</h4>
+        <label class="fopt"><input type="checkbox" data-filter="flag" value="Low MOQ"><span>Low MOQ</span></label>
+        <label class="fopt"><input type="checkbox" data-filter="flag" value="Factory Direct"><span>Factory Direct</span></label>
+        <label class="fopt"><input type="checkbox" data-filter="gst" value="gst"><span>GST invoice available</span></label>
+        <label class="fopt"><input type="checkbox" data-filter="new" value="new"><span>New arrivals</span></label>
+      </div>
+    </aside>
+
+    <div>
+      <div class="grid-products" id="grid"></div>
+    </div>
+  </div>
+</main>
+
+<div id="mk-footer"></div>
+
+<script src="manakart-data.js"></script>
+<script src="manakart.js"></script>
+<script src="manakart-art.js"></script>
+<script src="manakart-chrome.js"></script>
+<script>
+const ALL = MK_DATA.PRODUCTS;
+const cats = [...new Set(ALL.map(p => p.cat))];
+const regions = [...new Set(ALL.map(p => p.region))];
+
+document.getElementById('fCat').innerHTML = cats.map(c =>
+  `<label class="fopt"><input type="checkbox" data-filter="cat" value="${c}"><span>${c}</span><span class="count">${ALL.filter(p=>p.cat===c).length}</span></label>`).join('');
+document.getElementById('fRegion').innerHTML = regions.map(r =>
+  `<label class="fopt"><input type="checkbox" data-filter="region" value="${r}"><span>${r}</span><span class="count">${ALL.filter(p=>p.region===r).length}</span></label>`).join('');
+
+function activeFilters() {
+  const f = { cat:[], region:[], flag:[], gst:false, new:false };
+  document.querySelectorAll('.filters input:checked').forEach(i => {
+    const k = i.dataset.filter;
+    if (k === 'gst') f.gst = true;
+    else if (k === 'new') f.new = true;
+    else f[k].push(i.value);
+  });
+  return f;
+}
+function render() {
+  const f = activeFilters();
+  let list = ALL.filter(p =>
+    (!f.cat.length || f.cat.includes(p.cat)) &&
+    (!f.region.length || f.region.includes(p.region)) &&
+    (!f.flag.length || f.flag.includes(p.flag)) &&
+    (!f.gst || p.gst) &&
+    (!f.new || p.new)
+  );
+  const sort = document.getElementById('sortSel').value;
+  if (sort === 'low') list.sort((a,b)=>a.price-b.price);
+  else if (sort === 'high') list.sort((a,b)=>b.price-a.price);
+  else if (sort === 'rating') list.sort((a,b)=>b.rating-a.rating);
+  else if (sort === 'new') list.sort((a,b)=>(b.new?1:0)-(a.new?1:0));
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML = list.length ? list.map(p => MKART.productCard(p)).join('')
+    : '<div class="empty">No products match these filters. Try clearing some.</div>';
+  document.getElementById('resultCount').textContent = `${list.length} product${list.length!==1?'s':''}`;
+  MKART.paintArt(grid);
+  list.forEach(p => { const b = grid.querySelector(`[data-wish="${p.id}"]`); if (b && MK.isWished(p.id)) b.classList.add('active'); });
+}
+document.querySelector('.filters').addEventListener('change', render);
+document.getElementById('sortSel').addEventListener('change', render);
+document.getElementById('clearBtn').addEventListener('click', () => {
+  document.querySelectorAll('.filters input:checked').forEach(i => i.checked = false);
+  render();
+});
+render();
+</script>
+</body>
+</html>

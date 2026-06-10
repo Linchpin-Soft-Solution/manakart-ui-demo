@@ -1,0 +1,26 @@
+{
+  "products": {
+    "brass-diya": "/images/brass-diya.jpg",
+    "jute-tote": "/images/jute-tote.jpg",
+    "peanut-chikki": "/images/peanut-chikki.jpg",
+    "cotton-fabric": "/images/cotton-fabric.jpg",
+    "spices-combo": "/images/spices-combo.jpg",
+    "terracotta-planter": "/images/terracotta-planter.jpg",
+    "brass-urli": "/images/brass-urli.jpg",
+    "jute-sack": "/images/jute-sack.jpg",
+    "turmeric-whole": "/images/turmeric-whole.jpg",
+    "handloom-stack": "/images/handloom-stack.jpg",
+    "jaggery-block": "/images/jaggery-block.jpg",
+    "blue-pottery-set": "/images/blue-pottery-set.jpg"
+  },
+  "arts": {
+    "diya": "/images/art-diya.jpg",
+    "pottery": "/images/art-pottery.jpg",
+    "spices": "/images/art-spices.jpg",
+    "textile": "/images/art-textile.jpg",
+    "basket": "/images/art-basket.jpg",
+    "jute": "/images/art-jute.jpg",
+    "chikki": "/images/art-chikki.jpg",
+    "grain": "/images/art-grain.jpg"
+  }
+}
