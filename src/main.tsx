@@ -5,6 +5,7 @@ import App from './App'
 import { StoreProvider } from './context/StoreContext'
 import './styles/manakart.css'
 import './styles/pages.css'
+import './styles/pages-extra.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

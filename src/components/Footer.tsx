@@ -11,7 +11,7 @@ export function Footer() {
         <div className="foot-col">
           <h5>Shop</h5>
           <Link to="/category">All Categories</Link>
-          <Link to="/regions">Shop by Region</Link>
+          <Link to="/region">Shop by Region</Link>
           <Link to="/deals">Bulk Deals</Link>
           <Link to="/category?new=1">New Arrivals</Link>
           <Link to="/category?flag=Factory+Direct">Factory Direct</Link>

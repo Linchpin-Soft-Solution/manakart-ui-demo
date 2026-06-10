@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ChevronRight, MapPin, Store } from 'lucide-react'
+import { ArrowRight, ChevronRight, MapPin, Package, Store } from 'lucide-react'
 import { PRODUCTS, VENDORS, type ArtKey } from '../data/catalog'
 import { Art } from '../art/Art'
 import { imageForArt } from '../art/images'
@@ -53,9 +53,15 @@ export function Regions() {
                 <Art art={r.art} src={imageForArt(r.art)} alt={r.region} />
               </div>
               <div className="region-body">
-                <h3>{r.region}</h3>
-                <div className="meta"><MapPin strokeWidth={1.8} />{r.specialty}</div>
-                <div className="meta"><Store strokeWidth={1.8} />{r.products} products · {r.sellers} seller{r.sellers !== 1 ? 's' : ''}</div>
+                <div className="region-title">
+                  <h3>{r.region}</h3>
+                  <span className="region-arrow" aria-hidden="true"><ArrowRight strokeWidth={2} /></span>
+                </div>
+                <div className="region-specialty"><MapPin strokeWidth={1.8} />{r.specialty}</div>
+                <div className="region-stats">
+                  <span><Package strokeWidth={1.8} />{r.products} products</span>
+                  <span><Store strokeWidth={1.8} />{r.sellers} verified seller{r.sellers !== 1 ? 's' : ''}</span>
+                </div>
               </div>
             </Link>
           ))}

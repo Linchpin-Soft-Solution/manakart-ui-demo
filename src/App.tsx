@@ -38,6 +38,7 @@ export default function App() {
         <Route path="/deals" element={<BulkDeals />} />
         <Route path="/about" element={<About />} />
         <Route path="/track" element={<TrackOrder />} />
+        <Route path="/region" element={<Regions />} />
         <Route path="/regions" element={<Regions />} />
         <Route path="/sell" element={<Sell />} />
         <Route path="/login" element={<Login />} />

@@ -54,7 +54,7 @@ export function Header() {
         <div className="container">
           <div className="nav-group">
             <Link to="/category" className="nav-link">Categories</Link>
-            <Link to="/regions" className="nav-link">Shop by Region</Link>
+            <Link to="/region" className="nav-link">Shop by Region</Link>
             <Link to="/deals" className="nav-link">Bulk Deals</Link>
             <Link to="/category?new=1" className="nav-link">New Arrivals</Link>
             <Link to="/category?flag=Low+MOQ" className="nav-link">Low MOQ</Link>
