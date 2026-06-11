@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { ChevronRight, X } from 'lucide-react'
+import { ChevronRight, SlidersHorizontal, X } from 'lucide-react'
 import { PRODUCTS, getVendor } from '../data/catalog'
 import { ProductCard } from '../components/ProductCard'
 
@@ -29,6 +29,7 @@ export function Category() {
   const [gst, setGst] = useState(() => searchParams.get('gst') === '1')
   const [isNew, setIsNew] = useState(() => searchParams.get('new') === '1')
   const [sort, setSort] = useState<Sort>('pop')
+  const [filterOpen, setFilterOpen] = useState(false)
 
   // sync filter state from the URL (deep links, nav links, region cards)
   useEffect(() => {
@@ -54,6 +55,8 @@ export function Category() {
     next.delete('q')
     setSearchParams(next, { replace: true })
   }
+
+  const activeFilterCount = cat.length + region.length + flag.length + (gst ? 1 : 0) + (isNew ? 1 : 0)
 
   const list = useMemo(() => {
     const out = PRODUCTS.filter((p) =>
@@ -104,11 +107,21 @@ export function Category() {
             <option value="rating">Top rated</option>
             <option value="new">Newest</option>
           </select>
+          <button
+            type="button"
+            className="filter-toggle"
+            aria-expanded={filterOpen}
+            aria-controls="category-filters"
+            onClick={() => setFilterOpen((open) => !open)}
+          >
+            <SlidersHorizontal strokeWidth={1.8} />
+            <span>Filters{activeFilterCount ? ` (${activeFilterCount})` : ''}</span>
+          </button>
         </div>
       </div>
 
       <div className="listing-layout">
-        <aside className="filters">
+        <aside className={`filters${filterOpen ? ' filters-open' : ''}`} id="category-filters">
           <div className="filter-head">
             <h3>Filters</h3>
             <button className="clear-btn" onClick={clearAll}>Clear all</button>
