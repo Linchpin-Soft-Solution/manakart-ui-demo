@@ -83,9 +83,9 @@ export function Cart() {
             <hr className="sum-divider" />
             <div className="sum-total"><span className="l">Total</span><span className="v">{rupee(subtotal + gst)}</span></div>
             <p className="sum-note">Inclusive of GST · freight added at checkout</p>
-            <button className="btn btn-primary btn-block" style={{ height: 52, fontSize: 16 }}>
+            <Link to="/payment" className="btn btn-primary btn-block" style={{ height: 52, fontSize: 16 }}>
               Proceed to checkout<ArrowRight strokeWidth={2} />
-            </button>
+            </Link>
             <div className="promo">
               <input type="text" placeholder="Promo code" />
               <button className="btn btn-ghost btn-sm">Apply</button>

@@ -55,24 +55,16 @@ export function Home() {
               <div className="cl cl-c"><Art art="spices" /></div>
               <div className="cl cl-d"><Art art="textile" /></div>
             </div>
-            <div className="hero-secure-seal" aria-label="100 percent secure verified MSME sellers">
-              <svg viewBox="0 0 200 200" role="img" aria-hidden="true">
-                <defs>
-                  <path id="secureTopArc" d="M 38 102 A 62 62 0 0 1 162 102" />
-                  <path id="secureBottomArc" d="M 38 118 A 62 62 0 0 0 162 118" />
-                </defs>
+            <div className="hero-secure-badge" aria-label="100 percent secure with SSL">
+              <div className="secure-copy">
+                <strong>100% secure</strong>
+                <span>with SSL</span>
+              </div>
+              <svg className="secure-lock-badge" viewBox="0 0 200 200" aria-hidden="true">
                 <polygon
                   className="seal-ribbon"
                   points="100,7.0 107.9,14.3 116.9,8.5 123.4,17.0 133.3,12.9 138.2,22.4 148.7,20.1 151.9,30.3 162.6,29.9 164.0,40.5 174.5,42.0 174.1,52.7 184.3,55.9 182.0,66.4 191.5,71.3 187.4,81.2 195.9,87.7 190.1,96.7 197.4,104.6 190.1,112.4 195.9,121.4 187.4,127.9 191.5,137.8 182.0,142.7 184.3,153.2 174.1,156.4 174.5,167.1 164.0,168.6 162.6,179.2 151.9,178.8 148.7,189.0 138.2,186.7 133.3,196.2 123.4,192.1 116.9,200.6 107.9,194.8 100.0,202.1 92.1,194.8 83.1,200.6 76.6,192.1 66.7,196.2 61.8,186.7 51.3,189.0 48.1,178.8 37.4,179.2 36.0,168.6 25.5,167.1 25.9,156.4 15.7,153.2 18.0,142.7 8.5,137.8 12.6,127.9 4.1,121.4 9.9,112.4 2.6,104.6 9.9,96.7 4.1,87.7 12.6,81.2 8.5,71.3 18.0,66.4 15.7,55.9 25.9,52.7 25.5,42.0 36.0,40.5 37.4,29.9 48.1,30.3 51.3,20.1 61.8,22.4 66.7,12.9 76.6,17.0 83.1,8.5 92.1,14.3"
                 />
-                <text className="seal-text">
-                  <textPath href="#secureTopArc" startOffset="50%" textAnchor="middle">100% SECURE</textPath>
-                </text>
-                <text className="seal-text">
-                  <textPath href="#secureBottomArc" startOffset="50%" textAnchor="middle">VERIFIED MSME</textPath>
-                </text>
-                <text className="seal-stars seal-stars-left" x="35" y="112">★</text>
-                <text className="seal-stars seal-stars-right" x="165" y="112">★</text>
                 <g className="seal-lock">
                   <path d="M78 92V78c0-13 9.5-23 22-23s22 10 22 23v14h-11V78c0-7-4.4-12.5-11-12.5S89 71 89 78v14H78Z" />
                   <rect x="67" y="88" width="66" height="54" rx="12" />
