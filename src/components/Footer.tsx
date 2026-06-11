@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="site-footer" data-screen-label="Footer">
       <div className="container footer-top">
-        <div className="footer-brand">
+        <div className="footer-brand ">
           <span className="brand"><span className="m">M</span>anakart</span>
           <p>India's marketplace for MSME-made commodities. Buy direct from small manufacturers — verified, GST-ready, and built for business.</p>
         </div>
