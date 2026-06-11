@@ -15,6 +15,8 @@ import { Regions } from './pages/Regions'
 import { Sell } from './pages/Sell'
 import { Login } from './pages/Login'
 import { Contact } from './pages/Contact'
+import { PrivacyPolicy } from './pages/PrivacyPolicy'
+import { GstInvoicing } from './pages/GstInvoicing'
 
 /** Scroll to top on route change (each handoff page loaded fresh). */
 function ScrollToTop() {
@@ -43,6 +45,8 @@ export default function App() {
         <Route path="/sell" element={<Sell />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/gst-invoicing" element={<GstInvoicing />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

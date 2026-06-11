@@ -27,7 +27,8 @@ export function Footer() {
           <h5>Support</h5>
           <Link to="/track">Track Order</Link>
           <Link to="/contact">Returns &amp; Refunds</Link>
-          <Link to="/contact">GST &amp; Invoicing</Link>
+          <Link to="/gst-invoicing">GST &amp; Invoicing</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
         <div className="foot-col">
@@ -40,7 +41,7 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© 2026 Manakart Technologies Pvt. Ltd. · Made in India</span>
-        <span>Privacy · Terms · GST Compliance</span>
+        <span>Terms · GST Compliance</span>
       </div>
     </footer>
   )

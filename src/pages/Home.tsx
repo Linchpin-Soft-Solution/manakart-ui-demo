@@ -15,13 +15,13 @@ const CATEGORIES: [string, LucideIcon][] = [
 ]
 
 interface Deal {
-  art: ArtKey; kicker: string; title: string; copy: string; hero?: boolean
+  art: ArtKey; kicker: string; title: string; copy?: string; hero?: boolean
 }
 const DEALS: Deal[] = [
   { art: 'spices', kicker: 'Factory Direct · Kerala', title: 'Up to 30% off whole-spice combos', copy: 'Cardamom, pepper, clove & turmeric — sourced direct from Idukki estates.', hero: true },
-  { art: 'jute', kicker: 'Kolkata, WB', title: 'Jute & eco-packaging', copy: 'MOQ 50' },
-  { art: 'textile', kicker: 'Coimbatore, TN', title: 'Cotton fabric by the metre', copy: 'MOQ 50' },
-  { art: 'diya', kicker: 'Moradabad, UP', title: 'Brass & metalware', copy: 'MOQ 20' },
+  { art: 'jute', kicker: 'Kolkata, WB', title: 'Jute & eco-packaging' },
+  { art: 'textile', kicker: 'Coimbatore, TN', title: 'Cotton fabric by the metre' },
+  { art: 'diya', kicker: 'Moradabad, UP', title: 'Brass & metalware' },
 ]
 
 const bestsellers = PRODUCTS.slice(0, 5)
@@ -86,7 +86,7 @@ export function Home() {
                 <div className="deal-body">
                   <span className="deal-kicker">{d.kicker}</span>
                   <h3>{d.title}</h3>
-                  <p>{d.copy}</p>
+                  {d.copy && <p>{d.copy}</p>}
                   {d.hero && (
                     <span className="btn btn-accent btn-sm">
                       Shop the deal<ArrowRight strokeWidth={2} />

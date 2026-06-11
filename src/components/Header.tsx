@@ -1,13 +1,23 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { Search, Heart, User, ShoppingCart } from 'lucide-react'
+import { Search, Heart, Menu, ShoppingCart, User, X } from 'lucide-react'
 import { useStore } from '../context/StoreContext'
+
+const HEADER_CATEGORIES = [
+  { label: 'Handicraft', value: 'Handicrafts' },
+  { label: 'Packaging', value: 'Packaging' },
+  { label: 'Food Commodities', value: 'Food Commodities' },
+  { label: 'Textiles', value: 'Textiles' },
+  { label: 'Home & Kitchen', value: 'Home & Kitchen' },
+  { label: 'Agriculture', value: 'Agriculture' },
+]
 
 export function Header() {
   const { cartBadge, wishBadge } = useStore()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [q, setQ] = useState(searchParams.get('q') ?? '')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   // keep the field in sync with the URL (e.g. back/forward, direct link)
   useEffect(() => { setQ(searchParams.get('q') ?? '') }, [searchParams])
@@ -15,6 +25,7 @@ export function Header() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
     const term = q.trim()
+    setMenuOpen(false)
     navigate(term ? `/category?q=${encodeURIComponent(term)}` : '/category')
   }
 
@@ -27,7 +38,7 @@ export function Header() {
         <form className="search" onSubmit={submit} role="search">
           <input
             type="text"
-            placeholder="Search for products, categories or sellers…"
+            placeholder="Search for products or sellers…"
             aria-label="Search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -36,7 +47,20 @@ export function Header() {
             <Search strokeWidth={2} />
           </button>
         </form>
+        <div className={`header-links${menuOpen ? ' open' : ''}`} id="mobile-header-menu">
+          <Link to="/sell" className="header-link header-link-accent" onClick={() => setMenuOpen(false)}>Sell on Manakart</Link>
+        </div>
         <div className="header-actions">
+          <button
+            type="button"
+            className="icon-btn menu-toggle"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-header-menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X strokeWidth={1.8} /> : <Menu strokeWidth={1.8} />}
+          </button>
           <Link to="/category" className="icon-btn" aria-label="Wishlist">
             <Heart strokeWidth={1.8} />
             {wishBadge > 0 && <span className="badge" data-wish-badge>{wishBadge}</span>}
@@ -50,20 +74,17 @@ export function Header() {
           </Link>
         </div>
       </div>
-      <nav className="header-nav">
-        <div className="container">
-          <div className="nav-group">
-            <Link to="/category" className="nav-link">Categories</Link>
-            <Link to="/region" className="nav-link">Shop by Region</Link>
-            <Link to="/deals" className="nav-link">Bulk Deals</Link>
-            <Link to="/category?new=1" className="nav-link">New Arrivals</Link>
-            <Link to="/category?flag=Low+MOQ" className="nav-link">Low MOQ</Link>
-            <Link to="/category?flag=Factory+Direct" className="nav-link">Factory Direct</Link>
-          </div>
-          <div className="nav-group">
-            <Link to="/sell" className="nav-link accent">Sell on Manakart</Link>
-            <Link to="/login" className="nav-link">Login</Link>
-          </div>
+      <nav className="header-nav" aria-label="Product categories">
+        <div className="container category-nav">
+          {HEADER_CATEGORIES.map((category) => (
+            <Link
+              key={category.value}
+              to={`/category?cat=${encodeURIComponent(category.value)}`}
+              className="nav-link"
+            >
+              {category.label}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>
